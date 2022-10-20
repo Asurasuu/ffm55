@@ -3,12 +3,12 @@ require_once("./include/db.php");
 
 $id = $_GET['id'];
 switch ( $_GET['type'] ) {
-    case "event":
+    case "event": // if championship event
         $art_query = mysqli_query($connection, "SELECT * FROM `events` WHERE `id` = '$id'");
         $art = mysqli_fetch_array($art_query);
         break;
 
-    case "new":
+    case "new": // if news article
         $art_query = mysqli_query($connection, "SELECT * FROM `news` WHERE `id` = '$id'");
         $art = mysqli_fetch_array($art_query);
         break;
@@ -79,33 +79,47 @@ if( mysqli_num_rows($qq) != 0 ) {
             <?
                 if( $_GET['type'] == 'event' && $art['rules'] != null ) {
                     ?>
-                    <h3 style="text-align: center; text-transform: uppercase;"><a href="./img/protocols/<? echo $event['protocol']; ?>" target="_blank" downloaded style="color: orange; text-decoration: none;">>> Положение соревнований <<</a></h3>
+                    <h3 style="text-align: center; text-transform: uppercase;"><a href="./img/protocols/<?php echo $art['protocol']; ?>" target="_blank" downloaded style="color: orange; text-decoration: none;">>> Положение соревнований <<</a></h3>
                     <?
                 }
             ?>
 
             <div class="text">
                 <p>
-                    <?
-                        if( $_GET['type'] == 'event' ) {
-                            if( $_SESSION['id'] != "" && $cols == true ) {
-                                ?>
-                                <a href="./scripts/add_cols.php?user=<? echo $_SESSION['id'];?>&event=<? echo $id;?>">Оставить заявку</a>
-                                <?
-                            } else if( $_SESSION['id'] == "" ) {
-                                ?>
-                                Вы не можете предварительно зарегестрироваться, так как вы не <a href="./login.php?event=<? echo $id;?>">авторизованы</a>
-                                <?
-                            } else {
-                                ?>
-                                Вы уже оставили заявку. Свои заявки вы можете посмотреть в <a href="./user.php">профиле</a>
-                                <?
-                            }
-                        }
-                    ?>
-                </p>  
+                    <a href="./registration-event.php?event=<?php echo $art['id']; ?>"
+                       style="
+                         padding: 20px 0;
+                         display:block;
+                         text-align: center;
+                         font-size: 24px;
+                       "
+                    >Зарегистрироваться на старт</a>
+                </p>
+<!--                <p>-->
+<!--                    --><?//
+//                        if( $_GET['type'] == 'event' ) {
+//                            if( $_SESSION['id'] != "" && $cols == true ) {
+//                                ?>
+<!--                                <a href="./scripts/add_cols.php?user=--><?// echo $_SESSION['id'];?><!--&event=--><?// echo $id;?><!--">Оставить заявку</a>-->
+<!--                                --><?//
+//                            } else if( $_SESSION['id'] == "" ) {
+//                                ?>
+<!--                                Вы не можете предварительно зарегестрироваться, так как вы не <a href="./login.php?event=--><?// echo $id;?><!--">авторизованы</a>-->
+<!--                                --><?//
+//                            } else {
+//                                ?>
+<!--                                Вы уже оставили заявку. Свои заявки вы можете посмотреть в <a href="./user.php">профиле</a>-->
+<!--                                --><?//
+//                            }
+//                        }
+//                    ?>
+<!--                </p>  -->
 
                 <? echo $art['text'];?>
+
+                <p>
+                    <a href="/list-user.php?event=<?php echo $art['id'];?>">Посмотреть список участников</a>
+                </p>
             </div>
         </div>
     </div>

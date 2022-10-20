@@ -2,8 +2,8 @@
 
 $data = array(
 	"server" => "localhost",
-	"db" => "cu52444_ffm",
-	"user" => "cu52444_ffm",
+	"db" => "cn23945_ffm",
+	"user" => "cn23945_ffm", // cu52444_ffm у дб такое же значения
 	"password" => "GodAsura535635"
 );
 
