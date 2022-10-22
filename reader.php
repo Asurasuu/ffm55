@@ -79,7 +79,7 @@ if( mysqli_num_rows($qq) != 0 ) {
             <?
                 if( $_GET['type'] == 'event' && $art['rules'] != null ) {
                     ?>
-                    <h3 style="text-align: center; text-transform: uppercase;"><a href="./img/protocols/<?php echo $art['rules']; ?>" target="_blank" downloaded style="color: orange; text-decoration: none;">>> Положение соревнований <<</a></h3>
+                    <h3 style="text-align: center; text-transform: uppercase;"><a href="./img/protocols/<?php echo $art['rules']; ?>" downloaded style="color: orange; text-decoration: none;">>> Положение соревнований <<</a></h3>
                     <?
                 }
             ?>
