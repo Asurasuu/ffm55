@@ -83,6 +83,8 @@ $event = mysqli_fetch_array($event_q);
             border-bottom: 1px solid #e08a19;
         }
 
+        .wrapper .form-event .block-e p input[type="file"] {border: none; padding: 0;}
+
         .wrapper .form-event .block-e p input[type="submit"] {
             background-color: #e08a19;
             font-size: 18px;
@@ -96,7 +98,7 @@ $event = mysqli_fetch_array($event_q);
 <body>
 
 <div class="wrapper">
-    <form action="./scripts/registration-event.php" method="post" class="form-event">
+    <form action="./scripts/registration-event.php" method="post" class="form-event" enctype="multipart/form-data">
         <div class="block-e t">
             <h1>Регистрация на <?php echo $event['title'];?></h1>
             <p><a href="./reader.php?type=event&id=<? echo $event['id'];?>" class="link">Вернуться назад</a></p>
@@ -138,7 +140,27 @@ $event = mysqli_fetch_array($event_q);
             <p><input type="text" name="club" placeholder="Мой ответ"></p>
         </div>
 
-        <!-- Тут должно быть поле с реквизитами для оплаты, но что-то пошло не так -->
+        <div class="block-e">
+            <h2>Загрузите скирншот оплаты</h2>
+            <p>Цены на вступительный взнос:<br><br>
+
+                Регистрация без футболки:<br>
+                До 18 лет - 700 рублей.<br>
+                Старше - 1 200 рублей.<br><br>
+
+                С футболкой :<br>
+                До 18 лет -2 000 рублей.<br>
+                Старше - 2 500 рублей.
+            </p>
+            <p>
+                <b>Оплата производится по реквизитам:</b>
+                <br><br>
+                Сбербанк: 89006780764
+                <br>
+                Получатель Мусияк Сергей Александрович
+            </p>
+            <p><input type="file" name="sale"></p>
+        </div>
 
         <div class="block-e">
             <p><input type="submit" name="registration-on-event" value="Зарегистрироваться"></p>

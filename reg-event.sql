@@ -1,1 +1,2 @@
 CREATE TABLE `cn23945_ffm`.`reg_events` (`id` INT(11) NOT NULL AUTO_INCREMENT , `fullname` VARCHAR(255) NOT NULL COMMENT 'Полное фио пользователя' , `phone` VARCHAR(255) NOT NULL COMMENT 'Телефон пользователя' , `category` VARCHAR(255) NOT NULL COMMENT 'Категория' , `shirt` VARCHAR(255) NULL COMMENT 'Размер футболки' , `club` VARCHAR(255) NULL COMMENT 'Клуб' , `id_event` INT(11) NOT NULL COMMENT 'id соревнования' , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+ALTER TABLE `reg_events` ADD `name_file` VARCHAR(255) NULL COMMENT 'Название скрина об оплате' AFTER `id_event`;
